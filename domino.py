@@ -1,4 +1,4 @@
-
+import Funcoes 
 
 print("Insper Dominó")
 print('=-'*70)
