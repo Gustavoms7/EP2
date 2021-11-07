@@ -1,3 +1,4 @@
+import random
 import Funcoes
 
 print("Insper Dominó")
@@ -19,17 +20,63 @@ while numero_jogadores <= 1 or numero_jogadores >= 5 :
 pecas=Funcoes.cria_pecas()
 #distribuindo
 domino = Funcoes.inicia_jogo(numero_jogadores,pecas)
-mesa = domino['mesa']
-print(f'Mesa: {mesa}')
-minhas_pecas = domino['jogadores'][0]
-print(f'Minhas peças: {minhas_pecas}')
-posicoes_possiveis = Funcoes.posicoes_possiveis(mesa,minhas_pecas)
-print(f'Posições Possíveis: {posicoes_possiveis}')
-peca = int(input('Escolha a peça: '))
-peca_escolhida = minhas_pecas[peca]
-print(f'Peça Escolhida: {peca_escolhida}')
-adiciona = Funcoes.adiciona_na_mesa(peca_escolhida,mesa)
-print(f'Mesa: {adiciona}')
+adiciona = domino['mesa']
+monte = domino['monte']
+i= random.randint(0,numero_jogadores)
+while i<=numero_jogadores:
+    print(f'Mesa: {adiciona}')
+    if i==numero_jogadores:
+        i=0
+    elif i==0:
+        pecas = domino['jogadores'][i]
+        print(f'Minhas peças: {pecas}')
+        posicoes_possiveis = Funcoes.posicoes_possiveis(adiciona,pecas)
+        while True:    
+            if posicoes_possiveis==[]:
+                print(f'Não possui peças possíveis. Pegando do monte.')
+                input('[Pressione Enter]')
+                pecas.append(monte[0])
+                del monte[0]
+                print(pecas)
+            else:
+                print(f'Posições Possíveis: {posicoes_possiveis}')
+                break
+        peca = int(input('Escolha a peça: '))
+        peca_escolhida = pecas[peca]
+        print(f'Peça Escolhida: {peca_escolhida}')
+        adiciona = Funcoes.adiciona_na_mesa(peca_escolhida,adiciona)
+        print(f'Mesa: {adiciona}')
+        del pecas[peca]
+        print(f'Minhas peças: {pecas}')
+        i+=1
+    elif i !=0 :
+        pecas = domino['jogadores'][i]
+        print(f'Peças do jogador {i} : {pecas}')
+        posicoes_possiveis = Funcoes.posicoes_possiveis(adiciona,pecas)
+        while True:    
+            if posicoes_possiveis==[]:
+                print(f'Não possui peças possíveis. Pegando do monte.')
+                pecas.append(monte[0])
+                del monte[0]
+                print(pecas)
+            else:
+                print(f'Posições Possíveis: {posicoes_possiveis}')
+                break
+        
+        peca = random.randint(0,len(posicoes_possiveis)-1)
+        peca = posicoes_possiveis[peca]
+        peca_escolhida = pecas[peca]
+        print(f'Peça Escolhida: {peca_escolhida}')
+        adiciona = Funcoes.adiciona_na_mesa(peca_escolhida,adiciona)
+        print(f'Mesa: {adiciona}')
+        del pecas[peca]
+        print(f'Peças do jogador {i}: {pecas}')
+        i+=1
+    
+
+
+
+
 # verificando ganhador
 ganhador = Funcoes.verifica_ganhador(domino)
 # verifica soma 

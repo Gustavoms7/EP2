@@ -1,3 +1,4 @@
+import random 
 # Criando peças de dominó
 def cria_pecas():
 	distribuicao=[]
@@ -28,7 +29,7 @@ def verifica_ganhador(ganhador):
         if y == [] :
             return x
     return -1
-import random 
+
 
 
 #Soma peças do dominó
