@@ -1,4 +1,5 @@
 import random
+
 def cria_pecas():
 	distribuicao=[]
 	for i in range(7):
