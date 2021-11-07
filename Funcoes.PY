@@ -28,7 +28,7 @@ def verifica_ganhador(ganhador):
         if y == [] :
             return x
     return -1
-import random
+import random 
 
 
 #Soma peças do dominó
