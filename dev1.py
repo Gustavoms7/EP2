@@ -1,2 +1,0 @@
-print('GUSTAVO')
-print('oi')
