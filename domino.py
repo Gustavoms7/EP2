@@ -21,6 +21,7 @@ pecas=Funcoes.cria_pecas()
 domino = Funcoes.inicia_jogo(numero_jogadores,pecas)
 adiciona = domino['mesa']
 monte = domino['monte']
+passa_vez=0
 
 i= random.randint(0,numero_jogadores)
 while i<=numero_jogadores:
@@ -38,6 +39,7 @@ while i<=numero_jogadores:
                 pecas.append(monte[0])
                 del monte[0]
                 print(pecas)
+                posicoes_possiveis = Funcoes.posicoes_possiveis(adiciona,pecas)
             else:
                 print(f'Posições Possíveis: {posicoes_possiveis}')
                 break
@@ -46,12 +48,8 @@ while i<=numero_jogadores:
         print(f'Peça Escolhida: {peca_escolhida}')
         adiciona = Funcoes.adiciona_na_mesa(peca_escolhida,adiciona)
         del pecas[peca]
-        ganhador=Funcoes.verifica_ganhador(domino)
-        if ganhador==-1:
-            i+=1
-        else:
-            print(f'Mesa: {adiciona}')
-            break
+        i+=1
+   
     elif i !=0 :
         pecas = domino['jogadores'][i]
         print(f'Mesa: {adiciona}')
@@ -61,7 +59,7 @@ while i<=numero_jogadores:
                 print(f'Não possui peças possíveis. Pegando do monte.')
                 pecas.append(monte[0])
                 del monte[0]
-                print(pecas)
+                posicoes_possiveis = Funcoes.posicoes_possiveis(adiciona,pecas)
             else:
                 break
         peca = random.randint(0,len(posicoes_possiveis)-1)
@@ -70,13 +68,8 @@ while i<=numero_jogadores:
         print(f'Peça Escolhida: {peca_escolhida}')
         adiciona = Funcoes.adiciona_na_mesa(peca_escolhida,adiciona)
         del pecas[peca]
-        ganhador=Funcoes.verifica_ganhador(domino)
-        if ganhador==-1:
-            i+=1
-        else:
-            print(f'Mesa: {adiciona}')
-            break
-    
+        i+=1
+
 
 
 
